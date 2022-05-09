@@ -1,3 +1,6 @@
+run:
+	go run ./cmd/withgo $(ARGS)
+
 test:
 	go test ./...
 
