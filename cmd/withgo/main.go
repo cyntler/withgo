@@ -2,10 +2,23 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"time"
 
-	"github.com/cyntler/withgo/pkg/utils"
+	coingeckolib "github.com/superoo7/go-gecko/v3"
 )
 
 func main() {
-	fmt.Println(utils.Sum(5, 5))
+	httpClient := &http.Client{
+		Timeout: time.Second * 10,
+	}
+
+	coingecko := coingeckolib.NewClient(httpClient)
+	ping, err := coingecko.Ping()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(ping.GeckoSays)
 }
