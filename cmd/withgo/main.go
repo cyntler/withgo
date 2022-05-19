@@ -1,24 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
-	"time"
-
-	coingeckolib "github.com/superoo7/go-gecko/v3"
+	"github.com/go-rod/rod"
 )
 
 func main() {
-	httpClient := &http.Client{
-		Timeout: time.Second * 10,
-	}
-
-	coingecko := coingeckolib.NewClient(httpClient)
-	ping, err := coingecko.Ping()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(ping.GeckoSays)
+	rod.
+		New().
+		MustConnect().
+		MustPage("https://www.wikipedia.org/").
+		MustWaitLoad().
+		MustScreenshot("screenshot.png")
 }
