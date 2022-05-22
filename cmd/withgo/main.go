@@ -5,10 +5,12 @@ import (
 )
 
 func main() {
-	rod.
+	wikipedia := rod.
 		New().
 		MustConnect().
 		MustPage("https://www.wikipedia.org/").
-		MustWaitLoad().
-		MustScreenshot("screenshot.png")
+		MustWaitLoad()
+
+	wikipedia.MustScreenshot("screenshot1.png")
+	wikipedia.MustScreenshot("screenshot2.png")
 }
